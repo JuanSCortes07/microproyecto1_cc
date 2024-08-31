@@ -1,0 +1,25 @@
+config:
+  target: 'http://192.168.110.10'  # La IP del balanceador de carga HAProxy
+  phases:
+    - duration: 60
+      arrivalRate: 5
+    - duration: 120
+      arrivalRate: 10
+    - duration: 60
+      arrivalRate: 20
+
+scenarios:
+  - name: 'Perfil 1: Bajo tráfico'
+    flow:
+      - get:
+          url: '/'
+  
+  - name: 'Perfil 2: Tráfico moderado'
+    flow:
+      - get:
+          url: '/'
+  
+  - name: 'Perfil 3: Alto tráfico'
+    flow:
+      - get:
+          url: '/'
